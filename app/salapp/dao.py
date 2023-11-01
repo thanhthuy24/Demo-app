@@ -8,7 +8,7 @@ def load_categories():
             'name': 'Laptop'
     }]
 
-def load_products():
+def load_products(kw = None):
     products = [{
         'id' : 1,
         'name' : 'iPhone 13',
@@ -51,5 +51,8 @@ def load_products():
             'image': 'https://trangthienlong.com.vn/wp-content/uploads/2022/10/iphone-13-mau-hong-pink-128gb-256gb-512gb-trang-thien-long-mobile-510x510.jpg'
         }
     ]
+
+    if kw:
+        products = [p for p in products if p['name'].find(kw) >= 0]
 
     return products

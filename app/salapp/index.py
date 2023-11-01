@@ -1,12 +1,13 @@
-from flask import Flask, render_template
+from flask import render_template, request
 import dao
+from salapp import app
 
-app = Flask(__name__)
 
 @app.route('/')
 def index():
+    kw = request.args.get('kw')
     cates = dao.load_categories()
-    products = dao.load_products()
+    products = dao.load_products(kw)
     return render_template('index.html', categories=cates, products=products)
 
 if __name__ == '__main__':
